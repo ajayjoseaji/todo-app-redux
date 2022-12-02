@@ -16,8 +16,8 @@ export const TodoItem = ({ id, title }) => {
 
     return (
         <li>
-            <div>{title}</div>
             <div>
+                {title}
                 <button onClick={() => removeTask() }>Delete</button>
             </div>
         </li>

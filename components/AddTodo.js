@@ -4,19 +4,9 @@ import { addTask } from "../slices/todoSlice";
 
 export const AddTodo = () => {
     const [value, setValue] = useState('')
-
     const dispatch = useDispatch();
 
-	const onSubmit = (event) => {
-		event.preventDefault();
-
-		if(value.trim().length === 0)
-		{
-			alert("Enter a task before adding !!");
-			setValue("");
-			return;
-		}
-
+    const onSubmit = () => {
 		dispatch(
 			addTask({
 				task: value
@@ -30,9 +20,10 @@ export const AddTodo = () => {
         <div>
             <input type="text" 
                 placeholder="Type todo..."
+                value={value}
                 onChange={(e) => {setValue(e.target.value)}}
             />
-            <button onClick={onSubmit}>Add</button>
+            <button type="submit" onClick={onSubmit}>Add</button>
         </div>
     )
 }
