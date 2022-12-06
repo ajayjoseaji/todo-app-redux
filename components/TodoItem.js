@@ -1,15 +1,13 @@
 import { useDispatch } from "react-redux"
 import { deleteTask } from "../slices/todoSlice"
+import dayjs from 'dayjs'
+import { useEffect } from "react"
 
 
 export const TodoItem = ({ id, title, time}) => {
 
     const dispatch = useDispatch()
-    console.log(time)
 
-    if (time === new Date){
-        
-    }
     const removeTask = () => {
         dispatch(
             deleteTask({
@@ -17,6 +15,24 @@ export const TodoItem = ({ id, title, time}) => {
             })
         )
     }
+
+    useEffect(() => {
+        console.log('time',time)
+        const interval = setInterval(() => {
+            const isAfter = dayjs().isAfter(dayjs(time))
+            console.log({isAfter})
+            if (isAfter){
+                removeTask()
+            } 
+          }, 1000);
+
+          return () =>{
+            clearInterval(interval);
+          }
+    },[time])
+
+ 
+
 
     return (
         <li>
