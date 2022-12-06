@@ -2,10 +2,14 @@ import { useDispatch } from "react-redux"
 import { deleteTask } from "../slices/todoSlice"
 
 
-export const TodoItem = ({ id, title }) => {
+export const TodoItem = ({ id, title, time}) => {
 
     const dispatch = useDispatch()
+    console.log(time)
 
+    if (time === new Date){
+        
+    }
     const removeTask = () => {
         dispatch(
             deleteTask({
