@@ -38,7 +38,7 @@ export const TodoItem = ({ id, title, time}) => {
         <li>
             <div style={{display: "inline-flex"}}>
                 {title} <br />
-                {/* <code>deadline: 12:00 am</code> */}
+                <code>deadline: {time}</code>
                 <button onClick={() => removeTask() }>Delete</button>
             </div>
         </li>
