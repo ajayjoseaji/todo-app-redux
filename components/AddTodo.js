@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux";
+// import TimePicker from "react-time-picker/dist/entry.nostyle";
 import { addTask } from "../slices/todoSlice";
+import { TimeSelect } from "./TimeSelect";
 
 export const AddTodo = () => {
     const [value, setValue] = useState('')
@@ -17,13 +19,15 @@ export const AddTodo = () => {
 	};
 
     return (
-        <div>
+        <div style={{display: "inline-flex"}}>
             <input type="text" 
                 placeholder="Type todo..."
                 value={value}
                 onChange={(e) => {setValue(e.target.value)}}
             />
-            <button type="submit" onClick={onSubmit}>Add</button>
+            <TimeSelect />
+            <button style={{cursor: "pointer"}} type="submit" onClick={onSubmit}>Add</button>
+                {/* <TimePicker onChange={setTime} value={time}/>  */}
         </div>
     )
 }
